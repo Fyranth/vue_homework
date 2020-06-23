@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>vue homework №01</title>
+        <!--Внешние ссылки-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 p-3 mb-2 bg-primary text-white">
+                        <h4 class="w-100 text-center ">Развертываемый текст</h4>
+                    </div>
+                </div>
+                <div id="app" class="container">
+                    <button v-on:click="changetext()">{{full_view?'Свернуть':'Подбробнее'}}</button> 
+                    <p class="w-50 mx-auto text-justify " v-text="current_text"></p>
+                </div>        
+            </div>
+        </div>
+        <script>var app = new Vue({
+            el: "#app",
+            data: {
+                current_text: '',
+                text_preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec purus mi, pharetra sed felis vel, sagittis maximus ipsum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ullamcorper justo hendrerit, vestibulum nisi non, ultrices mauris. Nam sem nunc, cursus at facilisis ac, porttitor sed dolor. Proin eu ex et magna fermentum eleifend. Suspendisse ac augue a mi maximus pharetra sit amet id diam. Pellentesque nec fermentum nibh. Donec ut velit eu dui efficitur blandit.',
+                text_full: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec purus mi, pharetra sed felis vel, sagittis maximus ipsum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ullamcorper justo hendrerit, vestibulum nisi non, ultrices mauris. Nam sem nunc, cursus at facilisis ac, porttitor sed dolor. Proin eu ex et magna fermentum eleifend. Suspendisse ac augue a mi maximus pharetra sit amet id diam. Pellentesque nec fermentum nibh. Donec ut velit eu dui efficitur blandit.
+Sed dapibus semper nibh eget vehicula. Nulla porta augue eu tellus varius, ac fringilla risus fermentum. Mauris eleifend urna vitae urna vestibulum sagittis. Sed commodo, felis ac vehicula iaculis, nunc tellus accumsan ante, a aliquam sapien dui eget arcu. Donec justo elit, tempor nec lorem in, rutrum pretium ex. Morbi lectus odio, aliquet in nisi in, luctus porttitor neque. Nam porttitor vitae velit vitae efficitur. Praesent fermentum dignissim nisl, eu luctus tortor consectetur sit amet.
+Cras feugiat mattis faucibus. Donec et libero est. Nulla tincidunt nec erat eget lobortis. Nam vitae ullamcorper nisi. Pellentesque tincidunt ligula blandit lorem ultrices, in vulputate magna luctus. In blandit fermentum maximus. Donec eget ornare arcu, in consequat leo. Etiam quis pellentesque nunc, eget fringilla nisi. In fringilla arcu eget erat aliquet imperdiet.
+Mauris vel varius nunc, a posuere ante. Proin non orci erat. Pellentesque ultrices mi quis nunc dignissim posuere. Praesent elit sem, euismod in ligula eu, egestas placerat lectus. Vestibulum tempor nunc turpis, ac rhoncus risus fringilla at. Praesent sit amet placerat arcu, a posuere erat. Mauris laoreet auctor nibh, non posuere est iaculis non. Duis lobortis vehicula erat, vitae vestibulum orci convallis nec. Proin sed quam eget sem luctus convallis. Cras molestie libero id lectus accumsan eleifend. Praesent ornare, tortor quis volutpat sagittis, felis nulla ullamcorper leo, vitae lacinia purus orci sit amet nulla.
+Nam pulvinar ullamcorper mauris, luctus consectetur velit ullamcorper nec. Praesent diam magna, congue eu metus et, suscipit porttitor enim. Etiam a ex lacus. Aliquam bibendum blandit viverra. Cras imperdiet ultrices orci a faucibus. Maecenas ante erat, sollicitudin a ligula at, efficitur eleifend tortor. Sed in nulla vulputate, mollis ipsum id, luctus elit. Sed blandit est nec pulvinar lacinia. Donec non eros mollis, eleifend odio tincidunt, auctor risus. Mauris convallis, urna vitae porttitor gravida, justo nisi ornare nulla, placerat interdum magna orci vitae urna.`,
+                full_view: false
+            },
+            
+            beforeMount: function() {
+                    this.current_text = this.text_preview;
+            },
+            methods: {
+                changetext: function() {
+                    this.full_view = !this.full_view;
+                    this.current_text = (this.full_view) ? this.text_full:this.text_preview;    
+                }
+            }
+        });</script>
+    </body>
+</html>
