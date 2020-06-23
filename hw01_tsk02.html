@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>vue homework №01</title>
+        <!--Внешние ссылки-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="content">
+                <div id="app">
+                    <div class="row">
+                        <div class="col-12 p-3 mb-2 bg-primary text-white">
+                            <h4 class="w-100 text-center ">Личный профиль</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">    
+                            <img class="w-100 text-center" v-bind:src="avatar_img" v-bind:alt="occupation"><img>  
+                        </div>
+                        <div class="col-8">
+                            <h4 class="w-100 text-center">Данные</h4>
+                            <div class="row border-bottom mb-1">
+                                <div class="col-4 bg-secondary text-white"><p class="mb-1">Логин</p></div>
+                                <div class="col-8 "><p class="mb-1" v-text="login"></p></div>
+                            </div>
+                            <div class="row border-bottom mb-1">
+                                <div class="col-4 bg-secondary text-white"><p class="mb-1">Email</p></div>
+                                <div class="col-8 "><p class="mb-1" v-text="email"></p></div>
+                            </div>
+                            <div class="row border-bottom mb-1">
+                                <div class="col-4 bg-secondary text-white"><p class="mb-1">Имя</p></div>
+                                <div class="col-8 "><p class="mb-1" >{{name}} {{surname}}</p></div>
+                            </div>
+                            <div class="row border-bottom mb-1">
+                                <div class="col-4 bg-secondary text-white"><p class="mb-1">Возраст</p></div>
+                                <div class="col-8 "><p class="mb-1" v-text="age"></p></div>
+                            </div>
+                            <div class="row border-bottom mb-1">
+                                <div class="col-4 bg-secondary text-white"><p class="mb-1">Должность</p></div>
+                                <div class="col-8 "><p class="mb-1" v-text="occupation"></p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+        </div>
+        <script>var app = new Vue({
+            el: "#app",
+            data: {
+                login: 'DarthVoder',
+                email: 'second-the-best@galaxy-empire.glx',
+                name: 'Anakin',
+                surname: 'Skyrunner',
+                age: 'too long....',
+                avatar_img: 'https://cdn.dribbble.com/users/588874/screenshots/2249528/dribbble.png',
+                occupation: 'Вредный дядька'
+            }
+        });</script>
+    </body>
+</html>

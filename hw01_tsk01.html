@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>vue homework №01</title>
+        <!--Внешние ссылки-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="content">
+                <div id="app">
+                    <div class="row">
+                        <div class="col-12 p-3 mb-2 bg-primary text-white">
+                            <h4 class="w-100 text-center ">{{label | upperCase}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">    
+                            <img class="w-100 text-center" v-bind:src="img" v-bind:alt="label"><img> 
+                            <h5 class="w-100 text-center m-3">Цена: {{price}}  {{val}}</h5> 
+                        </div>
+                        <div class="col-8">
+                            <h4 class="w-100 text-center">Характеристики</h4>
+                            <div class="row border-bottom">
+                                <div class="col-4 bg-secondary text-white"><p class="m-0">Производитель</p></div>
+                                <div class="col-8 "><p class="m-0" v-text="characteristics.creator"></p></div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-4 bg-secondary text-white"><p class="m-0">Линейка</p></div>
+                                <div class="col-8 "><p class="m-0" v-text="characteristics.line"></p></div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-4 bg-secondary text-white"><p class="m-0">Модель</p></div>
+                                <div class="col-8 "><p class="m-0" v-text="characteristics.model"></p></div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-4 bg-secondary text-white"><p class="m-0">Процессор</p></div>
+                                <div class="col-8 "><p class="m-0" v-text="characteristics.proccessor"></p></div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-4 bg-secondary text-white"><p class="m-0">Параметры монитора</p></div>
+                                <div class="col-8 "><p class="m-0" v-text="characteristics.monitor"></p></div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-4 bg-secondary text-white"><p class="m-0">Параметры графики</p></div>
+                                <div class="col-8 "><p class="m-0" v-text="characteristics.graphic"></p></div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-4 bg-secondary text-white"><p class="m-0">Параметры хранилища данных</p></div>
+                                <div class="col-8 "><p class="m-0" v-text="characteristics.storage"></p></div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-4 bg-secondary text-white"><p class="m-0">Операционная система</p></div>
+                                <div class="col-8 "><p class="m-0" v-text="characteristics.os"></p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+        </div>
+        <script>var app = new Vue({
+            el: "#app",
+            data: {
+                article: 661214055,
+                price: 999999,
+                val: 'руб.',
+                img: 'https://avatars.mds.yandex.net/get-mpic/1865974/img_id8955019323181065980.jpeg/orig',
+                label: 'Ноутбук ASUS ROG Zephyrus M GU502GU-ES116T',
+                characteristics: {
+                    creator: 'ASUS',
+                    line: 'ROG Zephyrus M',
+                    model: 'GU502GU-ES116T',
+                    proccessor: 'Intel Core i7 9750H 2600 МГц',
+                    monitor: '15.6 дюймов, 1920x1080, широкоформатный',
+                    graphic: 'NVIDIA GeForce GTX 1660 Ti, 6 ГБ, GDDR6',
+                    os: 'Windows 10 Home',
+                    storage: 'SSD 512 ГБ'
+                } 
+            },
+           
+        
+            filters: {
+                upperCase: function(string) {
+                    if(!string) return;
+                    return string.toUpperCase();
+                }
+            }
+        });</script>
+    </body>
+</html>
