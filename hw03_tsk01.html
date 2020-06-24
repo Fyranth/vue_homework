@@ -1,0 +1,135 @@
+<html>
+    <head>
+        <title>vue homework 01 task 01</title>
+        <!--Внешние ссылки-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="content">
+                <div id="app">
+                    <div class="row">
+                        <div class="col-12 p-3 mb-2 bg-light text-secondary shadow-sm">
+                            <h4 class="w-100 text-center ">Поиск статей</h4>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="w-100 p-2 flex-row jystify-content-center bg-light text-secondary shadow-sm">
+                            <input placeholder="Поиск..." type="text" v-model="search_str"> <!--v-on:change="seacrhArticles()">-->
+                        </div>   
+                        
+                                <template v-for="art in articles_found">
+                                    <div class="d-flex w-100 flex-column jystify-content-center bg-light text-secondary shadow-sm rounded">
+                                        
+                                        <div class="d-flex flex-row">
+                                            <div class="w-25">
+                                                <a class="w-100 h-100" :href="art.href" class="text-secondary" target="_blank">
+                                                    <img class="w-100 h-auto":src="art.img">
+                                                </a>
+                                            </div>
+                                            <div class="w-75">
+                                                <a :href="art.href" class="text-secondary" target="_blank">
+                                                    <h5 class="w-100 text-center">{{art.name}}</h5>
+                                                </a>
+                                                <p class="text-justify p-1" style="text-indent: 2%;" >{{art.description}}</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </template>
+                        
+                    </div>
+                </div>        
+            </div>
+        </div>
+        <script>
+            Vue.config.devtools = true;
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    articles: [
+                        {
+                            href: `https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%BE%D1%80%D1%83%D0%B6%D1%91%D0%BD%D0%BD%D1%8B%D0%B5_%D1%81%D0%B8%D0%BB%D1%8B_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8`,
+                            name: `Вооружённые силы Российской Федерации`,
+                            img: `https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Middle_emblem_of_the_Armed_Forces_of_the_Russian_Federation_%2827.01.1997-present%29.svg/150px-Middle_emblem_of_the_Armed_Forces_of_the_Russian_Federation_%2827.01.1997-present%29.svg.png`,
+                            description: `Вооружённые силы Российской Федерации (неофициальное сокращение ВС РФ, на военной форме одежды официально предусмотрены нашивки с надписью «Вооружённые Силы России») — государственная военная организация Российской Федерации, предназначенная для отражения агрессии, направленной против неё, для вооружённой защиты территориальной целостности и неприкосновенности её территории, а также для выполнения задач в соответствии с международными договорами.` 
+                        },
+                        {
+                            href: `https://ru.wikipedia.org/wiki/%D0%A1%D1%83%D1%85%D0%BE%D0%BF%D1%83%D1%82%D0%BD%D1%8B%D0%B5_%D0%B2%D0%BE%D0%B9%D1%81%D0%BA%D0%B0_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8`,
+                            name: `Сухопутные войска Российской Федерации`,
+                            img: `https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Great_emblem_of_the_Russian_Ground_Forces.svg/170px-Great_emblem_of_the_Russian_Ground_Forces.svg.png`,
+                            description: `Сухопу́тные войска́ (СВ) — один из трёх видов вооружённых сил Российской Федерации, предназначенный для ведения военных (боевых) действий преимущественно на суше в целях обеспечения обороны и безопасности Российской Федерации.` 
+                        },
+                        {
+                            href: `https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B7%D0%B4%D1%83%D1%88%D0%BD%D0%BE-%D0%BA%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5_%D1%81%D0%B8%D0%BB%D1%8B_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8`,
+                            name: `Воздушно-космические силы Российской Федерации`,
+                            img: `https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Great_emblem_of_the_Russian_Air-Cosmic_Forces.svg/150px-Great_emblem_of_the_Russian_Air-Cosmic_Forces.svg.png`,
+                            description: `Воздушно-космические силы (ВКС) — один из трёх видов вооружённых сил Российской Федерации, предназначенный для ведения боевых действий преимущественно в воздушном и космическом пространстве в целях обеспечения обороны и безопасности Российской Федерации.` 
+                        },
+                        {
+                            href: `https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D1%81%D0%BA%D0%B0_%D0%9F%D0%92%D0%9E-%D0%9F%D0%A0%D0%9E`,
+                            name: `Войска ПВО-ПРО`,
+                            img: `https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Great_emblem_of_the_Russian_Air_Force.svg/191px-Great_emblem_of_the_Russian_Air_Force.svg.png`,
+                            description: `Войска противовозду́шной и противораке́тной оборо́ны — до 1998 года самостоятельный вид вооружённых сил (Войска ПВО). В 1998 г. Войска ПВО объединены с Военно-воздушными силами в новом виде вооружённых сил — Военно-воздушные силы.[2] В 2009—2010 гг. все соединения ПВО ВВС РФ (4 корпуса и 7 дивизий ПВО) переформированы в 11 бригад воздушно-космической обороны. В 2011 году три бригады ПВО ВВС вошли в состав нового рода войск Вооружённых сил — Войска воздушно-космической обороны.` 
+                        },
+                        {
+                            href: `https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D1%81%D0%BA%D0%B0`,
+                            name: `Космические войска`,
+                            img: `https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Great_emblem_of_the_Russian_Space_Forces.svg/200px-Great_emblem_of_the_Russian_Space_Forces.svg.png`,
+                            description: `Косми́ческие войска́ — род войск в составе Воздушно-космических сил России (ВКС России). Космические войска предназначены для обеспечения безопасности России в космической сфере.` 
+                        },
+                        {
+                            href: `https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B5%D0%BD%D0%BD%D0%BE-%D0%BC%D0%BE%D1%80%D1%81%D0%BA%D0%BE%D0%B9_%D1%84%D0%BB%D0%BE%D1%82_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8`,
+                            name: `Военно-морской флот Российской Федерации`,
+                            img: `https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Great_emblem_of_the_Russian_Navy.svg/200px-Great_emblem_of_the_Russian_Navy.svg.png`,
+                            description: `Вое́нно-морско́й фло́т (ВМФ) — один из трёх видов вооружённых сил Российской Федерации, предназначенный для ведения боевых действий на море в целях обеспечения обороны и безопасности Российской Федерации.` 
+                        },
+                        {
+                            href: `https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D0%BA%D0%B5%D1%82%D0%BD%D1%8B%D0%B5_%D0%B2%D0%BE%D0%B9%D1%81%D0%BA%D0%B0_%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B5%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%BD%D0%B0%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D1%8F_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8`,
+                            name: `Ракетные войска стратегического назначения Российской Федерации`,
+                            img: `https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Great_emblem_of_Strategic_Rocket_Forces_of_Russia.svg/126px-Great_emblem_of_Strategic_Rocket_Forces_of_Russia.svg.png`,
+                            description: `Ракетные войска стратегического назначения Российской Федерации (РВСН РФ) — до 2001 года вид войск, после 2001 года и до настоящего момента отдельный род войск Вооружённых сил Российской Федерации, находящийся в непосредственном подчинении Генерального штаба Вооружённых сил Российской Федерации, главный компонент стратегических ядерных сил Российской Федерации.` 
+                        },
+                        {
+                            href: `https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B7%D0%B4%D1%83%D1%88%D0%BD%D0%BE-%D0%B4%D0%B5%D1%81%D0%B0%D0%BD%D1%82%D0%BD%D1%8B%D0%B5_%D0%B2%D0%BE%D0%B9%D1%81%D0%BA%D0%B0_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8`,
+                            name: `Воздушно-десантные войска Российской Федерации`,
+                            img: `https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Great_emblem_of_the_Russian_Airborne_Troops.svg/126px-Great_emblem_of_the_Russian_Airborne_Troops.svg.png`,
+                            description: `Возду́шно-деса́нтные войска́ (ВДВ) — отдельный род войск Вооруженных сил Российской Федерации, являющийся средством и предназначенный для охвата противника по воздуху и выполнения задач в его тылу по нарушению управления войсками, захвату и уничтожению наземных элементов высокоточного оружия, срыву выдвижения и развертывания резервов, нарушению работы тыла и коммуникаций, а также по прикрытию отдельных направлений, районов, открытых флангов, блокированию и уничтожению высаженных воздушных десантов, прорвавшихся группировок противника и выполнения других задач.` 
+                        },
+                        {
+                            href: `https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B5%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5_%D0%B2%D0%BE%D0%B9%D1%81%D0%BA%D0%B0_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8`,
+                            name: `Специальные войска Российской Федерации`,
+                            img: `https://cdn.fishki.net/upload/post/2018/10/12/2731850/95c173aac8ba1fe02761ae1794cb99fe.jpg`,
+                            description: `Специальные войска (службы) Вооружённых Сил Российской Федерации — специальные войска (СпВ) и службы Вооружённых Сил (ВС), предназначенные для управления, боевого, тылового обеспечения и решения специальных задач.` 
+                        }
+                    ],
+                    /*articles_found: [
+
+                    ],*/
+                    search_str: '',
+                    timeout: 100,
+                    timer: ''
+                },
+                computed: {
+                    articles_found: function() {
+                        let arr = [];
+                        this.articles.forEach(element => {
+                            let reg = new RegExp(`^.*${this.search_str}.*$`,'i');
+                            if(reg.test(element.name)) {
+                                arr.push(element);
+                            } 
+                        }); 
+                        return arr;  
+                        
+                    }
+                },
+                filters: {
+                    upperCase: function(string) {
+                        if(!string) return;
+                        return string.toUpperCase();
+                    }
+                }
+            });</script>
+    </body>
+</html>
