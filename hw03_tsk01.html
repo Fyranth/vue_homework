@@ -1,9 +1,14 @@
 <html>
     <head>
-        <title>vue homework 01 task 01</title>
+        <title>vue homework №3 task 01</title>
         <!--Внешние ссылки-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+        <style>
+            .pointer:hover{
+                cursor: pointer;
+            }
+        </style>       
     </head>
     <body>
         <div class="container-fluid">
@@ -14,31 +19,23 @@
                             <h4 class="w-100 text-center ">Поиск статей</h4>
                         </div>
                     </div>
-                    <div class="container">
+                    <div class="container d-flex flex-column jystify-content-center">
                         <div class="w-100 p-2 flex-row jystify-content-center bg-light text-secondary shadow-sm">
-                            <input placeholder="Поиск..." type="text" v-model="search_str"> <!--v-on:change="seacrhArticles()">-->
+                            <input placeholder="Поиск..." type="text" v-model="search_str">
                         </div>   
-                        
-                                <template v-for="art in articles_found">
-                                    <div class="d-flex w-100 flex-column jystify-content-center bg-light text-secondary shadow-sm rounded">
-                                        
-                                        <div class="d-flex flex-row">
-                                            <div class="w-25">
-                                                <a class="w-100 h-100" :href="art.href" class="text-secondary" target="_blank">
-                                                    <img class="w-100 h-auto":src="art.img">
-                                                </a>
-                                            </div>
-                                            <div class="w-75">
-                                                <a :href="art.href" class="text-secondary" target="_blank">
-                                                    <h5 class="w-100 text-center">{{art.name}}</h5>
-                                                </a>
-                                                <p class="text-justify p-1" style="text-indent: 2%;" >{{art.description}}</p>
-                                            </div>
-                                        </div>
-                                        
+                        <template v-for="art in articles_found">
+                            <div class="w-100 d-flex flex-column jystify-content-center bg-light text-secondary shadow-sm rounded my-2 mx-auto">
+                                <div class="d-flex flex-row w-100 h-100 align-items-center">
+                                    <div class="w-25 pointer d-flex jystify-content-center">
+                                        <img class="mw-100 mx-auto" :src="art.img" v-on:click="openLink(art.href)">
                                     </div>
-                                </template>
-                        
+                                    <div class="w-75 h-100">
+                                        <h5 class="w-100 text-center pointer" v-on:click="openLink(art.href)">{{art.name}}</h5>
+                                        <p class="text-justify p-1" style="text-indent: 2%;" >{{art.description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
                     </div>
                 </div>        
             </div>
@@ -122,6 +119,11 @@
                         }); 
                         return arr;  
                         
+                    }
+                },
+                methods: {
+                    openLink: function(href) {
+                        window.open(href, "_blank");
                     }
                 },
                 filters: {
