@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>vue homework №3 task 01</title>
+        <!--Внешние ссылки-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+        <style>
+            body {
+                position: relative;
+            }
+            .pointer:hover{
+                cursor: pointer;
+            }
+            .form_box{
+                display: flex;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: black;
+                opacity: 0.3;
+                z-index: 5;
+            }
+            .form_enable {
+                display: none;
+            }
+            .form {
+                display: flex;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                width: 50%;
+                
+                opacity: 1; 
+            }
+        </style>       
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="content">
+                <div id="app">
+                    <div class="row">
+                        <div class="w-100 p-3 mb-2 bg-light text-secondary shadow-sm">
+                            <h4 class="w-100 text-center ">Редактирование содержимого тэга "P"</h4>
+                        </div>
+                    </div>
+                    <div class="container d-flex flex-column jystify-content-center">
+                        <div class="w-100 p-2 flex-row jystify-content-center bg-light text-secondary shadow-sm text-center">
+                            <p class="pointer w-100" v-text="string" v-on:click="formChange(true)"></p>
+                        </div>
+                        <div id="form_box" class="form_box" v-bind:class="{ form_enable: !enabled }">
+                            <div id="form" class="p-2 d-flex flex-column jystify-content-center bg-light text-secondary shadow-sm form opacity-5" >
+                                <textarea :placeholder="new_string" type="text" v-model="new_string" class="w-100"></textarea>
+                                <div class="w-100 d-flex flex-row jystify-content-center mx-auto">
+                                    <button class="w-50 text-center" type="button" v-on:click="formChange(false, true)">Ok</button>
+                                    <button class="w-50 text-center" type="button" v-on:click="formChange(false, false)">Отмена</button>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                </div>        
+            </div>
+        </div>
+        <script>
+            Vue.config.devtools = true;
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    string: 'Измени моё содержимое',
+                    new_string: '',
+                    enabled: false   
+                },
+                methods: {
+                    formChange: function(check, flag) {
+                        this.enabled=check;
+                        if(!check && flag) {
+                            this.string = this.new_string;
+                            this.new_string = '';    
+                        } else if(check && !flag) {
+                            this.new_string = this.string;
+                        }
+                    },
+                    
+                }
+            });</script>
+    </body>
+</html>

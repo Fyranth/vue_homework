@@ -112,7 +112,8 @@
                     articles_found: function() {
                         let arr = [];
                         this.articles.forEach(element => {
-                            let reg = new RegExp(`^.*${this.search_str}.*$`,'i');
+                            //let reg = new RegExp(`^.*${this.search_str}.*$`,'i');
+                            let reg = new RegExp(this.search_str,'i');
                             if(reg.test(element.name)) {
                                 arr.push(element);
                             } 
