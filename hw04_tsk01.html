@@ -1,0 +1,140 @@
+<html>
+    <head>
+        <title>vue homework №4 task 01</title>
+        <!--Внешние ссылки-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+        <style>
+            body {
+                position: relative;
+            }
+            .pointer:hover{
+                cursor: pointer;
+            }
+            .form_box{
+                display: flex;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: black;
+                opacity: 0.3;
+                z-index: 5;
+            }
+            .form_enable {
+                display: none;
+            }
+            .form {
+                display: flex;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                width: 50%;
+                
+                opacity: 1; 
+            }
+        </style>       
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="content">
+                <div id="app">
+                    <div class="row">
+                        <div class="w-100 p-3 mb-2 bg-light text-secondary shadow-sm">
+                            <h4 class="w-100 text-center ">Расчет списка услуг</h4>
+                        </div>
+                    </div>
+                    <ul class="container d-flex flex-column shadow-sm">
+                        <template v-for="service in services">
+                            <li class="w-100 d-flex flex-row align-items-center p-0">
+                                <p class="col-8 p-0">{{service.title}}</p>
+                                <p class="col-2 p-0">{{service.price}} руб.</p>
+                                <div class="col-2 d-flex flex-row p-0">
+                                    <button type="button" v-on:click="{changeService(service.id, -1)}">&#8722;</button>
+                                    <span class="w-50 text-center" v-bind:data-id="service.id">{{getCount(service.id)}}</span>
+                                    <button type="button" v-on:click="{changeService(service.id, 1)}">+</button>
+                                </div>
+                                
+                            </li>
+                        </template>
+                    </ul>
+                    <div class="container d-flex flex-column shadow-sm">
+                        <div class="w-100 d-flex flex-row align-items-center">
+                            <p class="col-8">Итого</p>
+                            <p class="col-2 p-0">{{cartPrice}} руб.</p>
+                        </div>   
+                    </div>                      
+                </div>        
+            </div>
+        </div>
+        <script>
+            Vue.config.devtools = true;
+            var app = new Vue({
+                el: "#app",
+                data: { 
+                    services: [{
+                        id: 0,
+                        title: 'Укладка пола',
+                        price: 100
+                    },
+                    {
+                        id: 1,
+                        title: 'Укладка плитки',
+                        price: 200
+                    },
+                    {
+                        id: 2,
+                        title: 'Выравнивание стен',
+                        price: 300
+                    },
+                    {
+                        id: 3,
+                        title: 'Покраска потолка',
+                        price: 400
+                        
+                    },
+                    {
+                        id: 4,
+                        title: 'Покраска стен',
+                        price: 500
+                    },
+                    {
+                        id: 5,
+                        title: 'Проведение проводки',
+                        price: 600
+                    }
+                    ],
+                    cart: []  
+                },
+                methods: {
+                    changeService: function(id, cnt) {
+
+                        let service = this.services.find(a => a.id==id);
+                        let serviceInCart = this.cart.findIndex(a => a.id==id);
+                        if(cnt>0){
+                            this.cart.push(service);
+                        }else {
+                            if(serviceInCart>=0) {
+                                this.cart.splice(serviceInCart, 1);
+                            }  
+                        }
+                    },
+                    getCount: function(id) {
+                        let ServiceCount = 0;
+                        this.cart.forEach(el => {if(el.id==id) ServiceCount++});
+                        return ServiceCount;
+                    }
+                    
+                },
+                computed: {
+                    cartPrice: function() {
+                        let ServicesPrice = 0;
+                        this.cart.forEach(el => ServicesPrice+=el.price);
+                        return ServicesPrice;   
+                    }
+                }
+            });</script>
+    </body>
+</html>
