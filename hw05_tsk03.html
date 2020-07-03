@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <title>vue homework №5 task 02</title>
+        <!--Внешние ссылки-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            .pointer:hover{
+                cursor: pointer;
+            }
+            .invisible {
+                display: none;
+            }
+            .gallery-img {
+                width: 400px;
+                height: auto;
+            }
+        </style>       
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="content">
+                <div id="app">
+                    <div class="row">
+                        <div class="col-12 p-3 mb-2 bg-light text-secondary shadow-sm">
+                            <h4 class="w-100 text-center ">Галерея</h4>
+                        </div>
+                    </div>
+                    <div class="container d-flex flex-row jystify-content-center">
+                        <gallery :gallery_data="contentList"></carusel>   
+                    </div>
+                </div>        
+            </div>
+        </div>
+        <script>
+            Vue.config.devtools = true;
+            Vue.component('gallery-item', {
+                data() { return {} },
+                props: {
+                    item_data: {
+                        type: Object,
+                        default: () => {}
+                    }
+                },
+                template: 
+                `<div class="d-flex flex-row align-items-center mt-2 mb-2 border bg-light text-secondary shadow-sm">
+                    <div class="w-100 text-center">
+                        <div class="d-flex w-100">
+                            <h5 class="flex-fill" v-text="item_data.name"></h5>
+                            <button class="border-0" @click="deleteImg(item_data.id)">✘</button>
+                        </div>
+                        <img class="gallery-img" :src="item_data.src">
+                    </div>
+                </div>`,
+                methods: {
+                    deleteImg(id) {
+                        let arr_id = app.contentList.findIndex(a => a.id==id);
+                        if(arr_id>=0) {
+                                app.contentList.splice(arr_id, 1);
+                            }  
+                    }    
+                }    
+            });
+
+            Vue.component('gallery', {
+                data: ()=>{
+                    return { }
+                },
+                props: {
+                    gallery_data: {
+                        type: Array,
+                        default: () => []
+                    }   
+                },
+                template:   `<div>
+                                <div class="carusel-item d-flex flex-row-reverse  mt-2 mb-2 border bg-light text-secondary shadow-sm">
+                                    <button class="ml-3" @click="addImg">Добавить</button>
+                                    <input id="imgName" class="ml-3" type="text" placeholder="Имя картинки">
+                                    <input id="imgPath" class="flex-fill" type="text" placeholder="Путь"> 
+                                </div>
+                                <div class="d-flex flex-wrap justify-content-around">
+                                    <gallery-item v-for="item in gallery_data" :key="item.id" :item_data="item"></gallery-item>
+                                </div>
+                            </div>`,
+                methods: {
+                    addImg() {
+                        let imgName = document.getElementById('imgName').value;
+                        if(imgName=='') return 
+                        let imgPath = document.getElementById('imgPath').value;
+                        if(imgPath=='') return
+                        let imgId = app.contentList[app.contentList.length-1].id+1;
+                        app.contentList.push({id:imgId, name:imgName, src: imgPath});
+                    }
+                }
+            })
+
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    currentId: 0,
+                    contentList: [  
+                        { id:0, name:'img 1', src: './img/1.jpg'},
+                        { id:1, name:'img 2', src: './img/2.jpg'},
+                        { id:2, name:'img 3', src: './img/3.jpg'},
+                        { id:3, name:'img 4', src: './img/4.jpg'},
+                        { id:4, name:'img 5', src: './img/5.jpg'},
+                        { id:5, name:'img 6', src: './img/6.jpg'},
+                        { id:6, name:'img 7', src: './img/7.jpg'},
+                        { id:7, name:'img 8', src: './img/8.jpg'},
+                        { id:8, name:'img 9', src: './img/9.jpg'},
+                    ]   
+                },
+                computed: {
+                        
+                },
+                methods: {
+                    
+                },
+                filters: {
+                    
+                },
+
+            });</script>
+    </body>
+</html>
