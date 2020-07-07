@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>vue homework №6</title>
+        <!--Внешние ссылки-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue-router@3.3.4/dist/vue-router.js"></script>
+        <style>
+            .pointer:hover{
+                cursor: pointer;
+            }
+            .invisible {
+                display: none;
+            }
+        </style>       
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="content">
+                <div id="app">
+                    <div class="row">
+                        <div class="col-12 p-3 mb-2 bg-light text-secondary shadow-sm">
+                            <h4 class="w-100 text-center ">Табы компоненты</h4>
+                        </div>
+                    </div>
+                    <div class="container d-flex flex-row jystify-content-center">
+                        <div class="w-25 p-2 d-flex flex-column jystify-content-center bg-light text-secondary shadow-sm">
+                            <nav class="w-100 text-center border border-info rounded text-secondary shadow-sm mt-1 pointer" v-for="link in links">
+                                <router-link :to='{ name: link.path}' tag="div" :key="link.path">{{link.name}}</router-link>   
+                            </nav>
+                            <!--<nav class="w-100 text-center border border-info rounded text-secondary shadow-sm mt-1 pointer">
+                                <router-link :to="{ name: 'products', params: {products_data: products}}" tag="div" :key="'products'">Товары</router-link>   
+                            </nav>-->
+                        </div>
+                        <div class="w-75 p-2 flex-row jystify-content-center bg-light text-secondary shadow-sm">
+                            <router-view></router-view> 
+                        </div>
+                    </div>
+                </div>        
+            </div>
+        </div>
+        <script src="js/main.js"></script>
+    </body>
+</html>
