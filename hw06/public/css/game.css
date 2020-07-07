@@ -1,0 +1,30 @@
+.cell {
+	width: 9%;
+	height: calc(width);
+	border: 1px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	cursor: pointer;
+	user-select: none;
+	margin: 1px;
+	/*position: absolute;*/
+}
+.cell-checked {
+    background-color: brown;
+}
+.cell-move {
+    /*transition: all 3s linear;*/
+    animation: cell-move 1s;
+}
+
+@keyframes cell-move {
+    0% {
+        margin-top: 50%;
+        margin-left: 100%;
+    }
+    100% {
+        margin-top: 0;
+        margin-left: 0;    
+    }
+}

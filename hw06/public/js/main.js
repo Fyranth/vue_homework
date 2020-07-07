@@ -1,4 +1,6 @@
 Vue.config.devtools = true;
+import {game} from '../js/game.js';
+
 const product = {
     data: ()=>{
         return { }
@@ -113,6 +115,8 @@ const contacts = {
 const NotFound  = {
     template: '<div class="w-100 text-center"><h2>404 Page Not Found</h2></div>' 
 };
+
+
 const routes = [ 
     { 
         path: '/', 
@@ -145,6 +149,12 @@ const routes = [
         component: product,
         props: true,
         name: 'product'
+    },
+    {
+        path: '/game', 
+        component: game,
+        props: true,
+        name: 'game'
     },
     { 
         path: '*', 
@@ -186,6 +196,11 @@ var app = new Vue({
             {
                 name: "Товары",
                 path: "products",
+                exact: false
+            },
+            {
+                name: "Игра",
+                path: "game",
                 exact: false
             }
         ],
