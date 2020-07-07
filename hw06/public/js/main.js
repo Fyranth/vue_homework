@@ -43,7 +43,7 @@ const products = {
         })
     },
     template: 
-        `<div>
+        `<div class="">
             <div class="d-flex flex-wrap justify-content-around">
                 <div class="w-50 d-flex flex-row p-4 mt-2 mb-2 border bg-light text-secondary shadow-sm" v-for="item in products_data" :key="item.id" :item_data="item">
                     <div class="w-100 text-center">
@@ -64,27 +64,27 @@ const products = {
 };
 
 const home = {
-    template: `<div class="w-100 text-center">
+    template: `<div class="w-100 text-center ">
                     <h3>Домашняя работа 5 Задание 1</h3>
                     <h4>выводим закладки со сменой содержимого через динамические закладки</h4>
-                    <img class="w-100" src="https://images.kashamalasha.com/201610050003-domashnyaya-rabota-kashamalasha-com.jpg">
+                    <img class="mw-100" src="https://images.kashamalasha.com/201610050003-domashnyaya-rabota-kashamalasha-com.jpg">
                 </div>`
 };
 const projects = {
-    template: `<div class="w-100 text-center">
+    template: `<div class="w-100 text-center ">
                     <h3>Великие проекты истории</h3>
                     <ol>
                         <li><h4>Еги́петские пирами́ды</h4>
-                        <img class="w-100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/All_Gizah_Pyramids-3.jpg/340px-All_Gizah_Pyramids-3.jpg">
+                        <img class="mw-100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/All_Gizah_Pyramids-3.jpg/340px-All_Gizah_Pyramids-3.jpg">
                         <p class="w-100 text-justify">Еги́петские пирами́ды — древние каменные сооружения пирамидальной формы, расположенные в Египте.</p>
                         <p class="w-100 text-justify">Количество объектов, идентифицируемых как египетские пирамиды, варьируется от 118 до 138 (по данным ноября 2008 года)[1][2]. Большая часть пирамид была построена в качестве усыпальниц для фараонов Древнего и Среднего царств[3][4]. Древнейшие из известных пирамид находятся в Саккаре. Самой древней считается пирамида Джосера, построенная архитектором Имхотепом в период с 2667 по 2648 гг. до н. э.</p>
                         </li>
                         <li><h4>Вавило́нская ба́шня</h4>
-                        <img class="w-100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Pieter_Bruegel_the_Elder_-_The_Tower_of_Babel_%28Vienna%29_-_Google_Art_Project.jpg/274px-Pieter_Bruegel_the_Elder_-_The_Tower_of_Babel_%28Vienna%29_-_Google_Art_Project.jpg">
+                        <img class="mw-100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Pieter_Bruegel_the_Elder_-_The_Tower_of_Babel_%28Vienna%29_-_Google_Art_Project.jpg/274px-Pieter_Bruegel_the_Elder_-_The_Tower_of_Babel_%28Vienna%29_-_Google_Art_Project.jpg">
                         <p class="w-100 text-justify">Вавило́нская ба́шня (Мигда́ль Баве́ль) — башня, которой посвящено библейское предание, изложенное в 11-й главе книги Бытие (Быт. 11:1—9). Согласно этому преданию, после Всемирного потопа человечество было представлено одним народом, говорившим на одном языке. С востока люди пришли на землю Сеннаар (в нижнем течении Тигра и Евфрата), где решили построить город, названный Вавилоном, и башню до небес, чтобы «сделать себе имя». Строительство башни было прервано Богом, который заставил людей заговорить на разных языках, из-за чего они перестали понимать друг друга, не могли продолжать строительство города и башни и рассеялись по всей земле. Таким образом, история о Вавилонской башне объясняет появление различных языков после Всемирного потопа.</p>
                         </li>
                         <li><h4>Интерне́т</h4>
-                        <img class="w-100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Internet_map_1024.jpg/250px-Internet_map_1024.jpg">
+                        <img class="mw-100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Internet_map_1024.jpg/250px-Internet_map_1024.jpg">
                         <p class="w-100 text-justify">Интерне́т (англ. Internet, МФА: [ˈɪn.tə.net]) — всемирная система объединённых компьютерных сетей для хранения, обработки и передачи информации[1].</p>
                         <p class="w-100 text-justify">Упоминается как Всемирная сеть и Глобальная сеть, а также просто Сеть. Построена на базе стека протоколов TCP/IP[2][3]. На основе Интернета работает Всемирная паутина (World Wide Web, WWW) и множество других систем передачи данных. К середине 2015 года число пользователей достигло 3,3 млрд человек. Во многом это было обусловлено широким распространением сотовых сетей с доступом в Интернет стандартов 3G и 4G, развитием социальных сетей и удешевлением стоимости интернет-трафика[4].</p>
                         </li>
@@ -92,7 +92,7 @@ const projects = {
                 </div>`
 };
 const services = {
-    template: `<div class="w-100 text-center">
+    template: `<div class="mw-100 text-center ">
                 <h3>Придоставим услуги</h3>
             
                 <Ol>
@@ -104,7 +104,7 @@ const services = {
                 </div>`
 };
 const contacts = {
-    template: `<div class="w-100 text-center">
+    template: `<div class="mw-100 text-center ">
                 <h3>Приёмная Президента Три-десятой федерации по приёму граждан в деревянном городе</h3>
                 <h4>Телефоны</h4>
                 <ul><li>+22(33)xxx-xxx</li><li>+22(33)xxx-xxx</li><li>+22(33)xxx-xxx</li></ul>
@@ -226,8 +226,7 @@ var app = new Vue({
     computed: {
         
     },
-    methods: {
-        
+    methods: {   
     },
     filters: {
         
